@@ -1,4 +1,4 @@
--- ============================================================
+﻿-- ============================================================
 
 -- DemoPPI — 完整数据库初始化 SQL (v1.0 Final)
 
@@ -38,6 +38,8 @@
 
 -- 1.1 PROFILES 表（扩展 auth.users）
 
+create extension if not exists pgcrypto;
+
 create table if not exists public.profiles (
 
   id uuid primary key references auth.users(id) on delete cascade,
@@ -66,7 +68,8 @@ alter table public.profiles enable row level security;
 
 
 
-create policy if not exists "Users can view all profiles"
+drop policy if exists "Users can view all profiles" on public.profiles;
+create policy "Users can view all profiles"
 
   on public.profiles for select
 
@@ -74,7 +77,8 @@ create policy if not exists "Users can view all profiles"
 
 
 
-create policy if not exists "Users can insert own profile"
+drop policy if exists "Users can insert own profile" on public.profiles;
+create policy "Users can insert own profile"
 
   on public.profiles for insert
 
@@ -82,7 +86,8 @@ create policy if not exists "Users can insert own profile"
 
 
 
-create policy if not exists "Users can update own profile"
+drop policy if exists "Users can update own profile" on public.profiles;
+create policy "Users can update own profile"
 
   on public.profiles for update
 
@@ -120,7 +125,8 @@ alter table public.connections enable row level security;
 
 
 
-create policy if not exists "Users can view connections"
+drop policy if exists "Users can view connections" on public.connections;
+create policy "Users can view connections"
 
   on public.connections for select
 
@@ -128,7 +134,8 @@ create policy if not exists "Users can view connections"
 
 
 
-create policy if not exists "Users can create own connections"
+drop policy if exists "Users can create own connections" on public.connections;
+create policy "Users can create own connections"
 
   on public.connections for insert
 
@@ -136,7 +143,8 @@ create policy if not exists "Users can create own connections"
 
 
 
-create policy if not exists "Users can delete own connections"
+drop policy if exists "Users can delete own connections" on public.connections;
+create policy "Users can delete own connections"
 
   on public.connections for delete
 
@@ -266,7 +274,8 @@ on conflict (id) do nothing;
 
 alter table public.value_tags enable row level security;
 
-create policy if not exists "Value tags are publicly readable"
+drop policy if exists "Value tags are publicly readable" on public.value_tags;
+create policy "Value tags are publicly readable"
 
   on public.value_tags for select using (true);
 
@@ -396,7 +405,8 @@ on conflict (id) do nothing;
 
 alter table public.interest_tags enable row level security;
 
-create policy if not exists "Interest tags are publicly readable"
+drop policy if exists "Interest tags are publicly readable" on public.interest_tags;
+create policy "Interest tags are publicly readable"
 
   on public.interest_tags for select using (true);
 
@@ -442,7 +452,8 @@ alter table public.invites enable row level security;
 
 
 
-create policy if not exists "Users can view own invites"
+drop policy if exists "Users can view own invites" on public.invites;
+create policy "Users can view own invites"
 
   on public.invites for select
 
@@ -450,7 +461,8 @@ create policy if not exists "Users can view own invites"
 
 
 
-create policy if not exists "Users can create own invites"
+drop policy if exists "Users can create own invites" on public.invites;
+create policy "Users can create own invites"
 
   on public.invites for insert
 
@@ -672,7 +684,8 @@ on conflict (id) do nothing;
 
 -- 4.2 Storage RLS 策略
 
-create policy if not exists "Avatar images are publicly accessible"
+drop policy if exists "Avatar images are publicly accessible" on storage.objects;
+create policy "Avatar images are publicly accessible"
 
   on storage.objects for select
 
@@ -680,7 +693,8 @@ create policy if not exists "Avatar images are publicly accessible"
 
 
 
-create policy if not exists "Users can upload own avatar"
+drop policy if exists "Users can upload own avatar" on storage.objects;
+create policy "Users can upload own avatar"
 
   on storage.objects for insert
 
@@ -694,7 +708,8 @@ create policy if not exists "Users can upload own avatar"
 
 
 
-create policy if not exists "Users can update own avatar"
+drop policy if exists "Users can update own avatar" on storage.objects;
+create policy "Users can update own avatar"
 
   on storage.objects for update
 
@@ -792,15 +807,18 @@ alter table public.quota_limits enable row level security;
 
 
 
-create policy if not exists "quota_usage_select_own" on public.quota_usage
+drop policy if exists "quota_usage_select_own" on public.quota_usage;
+create policy "quota_usage_select_own" on public.quota_usage
 
   for select using (auth.uid() = user_id);
 
-create policy if not exists "quota_usage_insert_own" on public.quota_usage
+drop policy if exists "quota_usage_insert_own" on public.quota_usage;
+create policy "quota_usage_insert_own" on public.quota_usage
 
   for insert with check (auth.uid() = user_id);
 
-create policy if not exists "quota_limits_public_read" on public.quota_limits
+drop policy if exists "quota_limits_public_read" on public.quota_limits;
+create policy "quota_limits_public_read" on public.quota_limits
 
   for select using (true);
 
@@ -998,7 +1016,7 @@ create table if not exists public.user_tiers (
 
   contribution_points int not null default 0,
 
-  governance_weight numeric(5,2) not null default 0.00
+  governance_weight numeric(5,2) not null
 
     generated always as (
 
@@ -1162,35 +1180,41 @@ alter table public.badge_level_thresholds enable row level security;
 
 
 
-create policy if not exists "user_tiers_select_own" on public.user_tiers
+drop policy if exists "user_tiers_select_own" on public.user_tiers;
+create policy "user_tiers_select_own" on public.user_tiers
 
   for select using (auth.uid() = user_id);
 
-create policy if not exists "user_tiers_upsert_own" on public.user_tiers
+drop policy if exists "user_tiers_upsert_own" on public.user_tiers;
+create policy "user_tiers_upsert_own" on public.user_tiers
 
   for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
 
 
 
-create policy if not exists "reputation_events_select_own" on public.reputation_events
+drop policy if exists "reputation_events_select_own" on public.reputation_events;
+create policy "reputation_events_select_own" on public.reputation_events
 
   for select using (auth.uid() = user_id);
 
 
 
-create policy if not exists "reputation_config_public_read" on public.reputation_point_config
+drop policy if exists "reputation_config_public_read" on public.reputation_point_config;
+create policy "reputation_config_public_read" on public.reputation_point_config
 
   for select using (true);
 
 
 
-create policy if not exists "badges_select_all" on public.badges
+drop policy if exists "badges_select_all" on public.badges;
+create policy "badges_select_all" on public.badges
 
   for select using (true);
 
 
 
-create policy if not exists "badge_thresholds_public_read" on public.badge_level_thresholds
+drop policy if exists "badge_thresholds_public_read" on public.badge_level_thresholds;
+create policy "badge_thresholds_public_read" on public.badge_level_thresholds
 
   for select using (true);
 
@@ -1478,11 +1502,13 @@ alter table public.governance_votes enable row level security;
 
 
 
-create policy if not exists "proposals_select_all" on public.governance_proposals
+drop policy if exists "proposals_select_all" on public.governance_proposals;
+create policy "proposals_select_all" on public.governance_proposals
 
   for select using (true);
 
-create policy if not exists "proposals_insert_paid" on public.governance_proposals
+drop policy if exists "proposals_insert_paid" on public.governance_proposals;
+create policy "proposals_insert_paid" on public.governance_proposals
 
   for insert with check (
 
@@ -1492,17 +1518,20 @@ create policy if not exists "proposals_insert_paid" on public.governance_proposa
 
   );
 
-create policy if not exists "proposals_update_own" on public.governance_proposals
+drop policy if exists "proposals_update_own" on public.governance_proposals;
+create policy "proposals_update_own" on public.governance_proposals
 
   for update using (auth.uid() = proposer_id);
 
 
 
-create policy if not exists "votes_select_all" on public.governance_votes
+drop policy if exists "votes_select_all" on public.governance_votes;
+create policy "votes_select_all" on public.governance_votes
 
   for select using (true);
 
-create policy if not exists "votes_insert_paid" on public.governance_votes
+drop policy if exists "votes_insert_paid" on public.governance_votes;
+create policy "votes_insert_paid" on public.governance_votes
 
   for insert with check (
 
@@ -1674,7 +1703,8 @@ alter table public.trust_fss_records enable row level security;
 
 
 
-create policy if not exists "trust_fss_records_select_authenticated"
+drop policy if exists "trust_fss_records_select_authenticated" on public.trust_fss_records;
+create policy "trust_fss_records_select_authenticated"
 
   on public.trust_fss_records
 
