@@ -1,7 +1,9 @@
 import { ImageResponse } from "next/og";
 import { NextRequest } from "next/server";
 
-export const runtime = "edge";
+// Next 16 已弃用 Edge Runtime：runtime="edge" 下 next/og 的响应管道会断裂
+// （本地 dev 报 "failed to pipe response"，Vercel 上表现为 200 + 空 body）。
+// 路由改走默认 Node 运行时，ImageResponse 在 Node 下工作正常。
 
 // MBTI 类型对应的颜色方案（主色 + 浅色背景）
 const MBTI_COLORS: Record<string, { primary: string; bg: string; accent: string }> = {
@@ -191,7 +193,7 @@ export async function GET(request: NextRequest) {
                       fontWeight: 600,
                     }}
                   >
-                    {d.dim} - {d.label}
+                    {`${d.dim} - ${d.label}`}
                   </div>
                 ))}
               </div>
@@ -220,14 +222,16 @@ export async function GET(request: NextRequest) {
                   paddingLeft: "16px",
                 }}
               >
-                &ldquo;{shortManifesto}&rdquo;
+                {/* satori 要求多子节点 div 必须显式 display:flex；
+                    引号必须与文本合成单个字符串子节点，写成 &ldquo;{x}&rdquo; 会被 JSX 拆成 3 个子节点而崩溃 */}
+                {`\u201C${shortManifesto}\u201D`}
               </div>
             )}
 
             {/* Value tags */}
             {valueList.length > 0 && (
-              <div>
-                <div style={{ fontSize: "13px", color: "#888", marginBottom: "8px", fontWeight: 600 }}>
+              <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                <div style={{ fontSize: "13px", color: "#888", fontWeight: 600 }}>
                   价值观
                 </div>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
@@ -252,8 +256,8 @@ export async function GET(request: NextRequest) {
 
             {/* Interest tags */}
             {interestList.length > 0 && (
-              <div>
-                <div style={{ fontSize: "13px", color: "#888", marginBottom: "8px", fontWeight: 600 }}>
+              <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                <div style={{ fontSize: "13px", color: "#888", fontWeight: 600 }}>
                   兴趣
                 </div>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
@@ -290,7 +294,7 @@ export async function GET(request: NextRequest) {
           }}
         >
           <div style={{ fontSize: "14px", color: "#999" }}>
-            找到你的共识圈 → genzer.app/p/{username ?? ""}
+            {`找到你的共识圈 → genzer.app/p/${username ?? ""}`}
           </div>
           <div
             style={{
