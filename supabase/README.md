@@ -1,7 +1,7 @@
 # Supabase 数据库文档
 
 项目：Genzer Terminal（Zervi-Genzer 共识网络软件终端 · 前身为 DemoPPI）  
-Supabase Project URL：`https://acozjhpjidrucqonpkey.supabase.co`
+Supabase Project URL：`https://ihuddnluwggbdppheixu.supabase.co`
 
 > **核心理念**：配额仅防刷滥用，治理权才是免费/付费的核心差异化。  
 > 参考：[genzer-contracts](https://github.com/xiajason/genzer-contracts)（GenzBadge + GenzReputation）
@@ -10,7 +10,7 @@ Supabase Project URL：`https://acozjhpjidrucqonpkey.supabase.co`
 
 ## 迁移文件执行顺序
 
-全新部署时，按以下顺序在 [SQL Editor](https://supabase.com/dashboard/project/acozjhpjidrucqonpkey/sql/new) 执行：
+全新部署时，按以下顺序在 [SQL Editor](https://supabase.com/dashboard/project/ihuddnluwggbdppheixu/sql/new) 执行：
 
 | 顺序 | 文件 | 内容 |
 |------|------|------|
