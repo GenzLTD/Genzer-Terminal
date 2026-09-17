@@ -23,6 +23,18 @@ function safeNextPath(raw: string | null): string {
 }
 
 export async function GET(request: NextRequest) {
+  try {
+    return await handleExchange(request);
+  } catch (e) {
+    // 环境变量缺失 / Supabase 异常等未预期错误：收敛到错误页，不裸 500（不回显内部细节）
+    console.error("[Auth/Exchange] 未预期错误:", e);
+    return NextResponse.redirect(
+      new URL("/auth/error?error=server_error", request.url)
+    );
+  }
+}
+
+async function handleExchange(request: NextRequest): Promise<NextResponse> {
   const { searchParams } = new URL(request.url);
   const code = searchParams.get("code");
   const next = safeNextPath(searchParams.get("next"));
