@@ -37,7 +37,7 @@ Thumbs.db
 # Miniprogram export archives (large binaries)
 miniprogram-export/
 
-# Lock file (generated)
-package-lock.json
+# Lock file —— 应用仓库必须提交：Dockerfile Stage 1/2 均使用 npm ci，
+# 缺少 package-lock.json 时 npm ci 会直接失败导致镜像无法构建（2026-09-17 修正）
 .idea/
 tmp_pkgs/
