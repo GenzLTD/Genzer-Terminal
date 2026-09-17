@@ -19,6 +19,8 @@ Supabase Project URL：`https://ihuddnluwggbdppheixu.supabase.co`
 | 3 | `migrations/20260530000000_invites.sql` | invites 表 + validate/consume/generate_invite RPC |
 | 4 | `migrations/20260531000000_fixes_and_seed.sql` | 种子邀请码 + Auth 配置说明 |
 | 5 | `migrations/20260531000000_quota_system.sql` | 社区自治基础设施：配额防刷 + 声誉系统 + SBT勋章 + 治理提案/投票 |
+| 6 | `migrations/20260605000000_trust_fss_records.sql` | Trust FSS 0.1 可选审计表 `trust_fss_records` |
+| 7 | `migrations/20260605000001_fix_user_tiers_governance_weight.sql` | `user_tiers.governance_weight` 补 NOT NULL，对齐 `genzer_terminal_init_v1.0.sql` 定义 |
 
 > **注意**：每个函数（`$$...$$`）须在单独的 SQL 窗口执行，避免 Supabase Dashboard 自动注入语句破坏 dollar-quoting。
 
