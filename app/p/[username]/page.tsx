@@ -37,9 +37,16 @@ export async function generateMetadata({
   const shortManifesto = manifesto.length > 60 ? manifesto.slice(0, 57) + "..." : manifesto;
 
   // 构建 OG Image URL
-  const baseUrl = process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}`
-    : process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
+  // 与 app/layout.tsx 的 canonical 基址同优先级：自定义域 → Vercel 生产域 → 部署域 → 本地。
+  // 勿把 VERCEL_URL 放首位：它随每次部署变化（xxx-abc123.vercel.app），
+  // 会把 og:url / og:image 导向临时预览域（P0-3）。
+  const baseUrl =
+    process.env.NEXT_PUBLIC_SITE_URL ||
+    (process.env.VERCEL_PROJECT_PRODUCTION_URL
+      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+      : process.env.VERCEL_URL
+        ? `https://${process.env.VERCEL_URL}`
+        : "http://localhost:3000");
   const ogImageUrl = `${baseUrl}/api/og/card?username=${encodeURIComponent(profile.username ?? param)}&name=${encodeURIComponent(name)}&mbti=${encodeURIComponent(mbtiType)}&city=${encodeURIComponent(city)}&manifesto=${encodeURIComponent(shortManifesto)}&values=${encodeURIComponent(valueTags.join(","))}&interests=${encodeURIComponent(interestTags.join(","))}`;
 
   const title = mbtiType
