@@ -24,7 +24,7 @@ export async function generateMetadata({
     : await supabase.from("profiles").select("username, layer0").eq("username", param).single();
 
   if (!profile) {
-    return { title: "用户不存在 | DemoPPI" };
+    return { title: "用户不存在 | Genzer Terminal" };
   }
 
   const layer0 = (profile.layer0 as Record<string, unknown>) ?? {};
@@ -43,11 +43,12 @@ export async function generateMetadata({
   const ogImageUrl = `${baseUrl}/api/og/card?username=${encodeURIComponent(profile.username ?? param)}&name=${encodeURIComponent(name)}&mbti=${encodeURIComponent(mbtiType)}&city=${encodeURIComponent(city)}&manifesto=${encodeURIComponent(shortManifesto)}&values=${encodeURIComponent(valueTags.join(","))}&interests=${encodeURIComponent(interestTags.join(","))}`;
 
   const title = mbtiType
-    ? `${name} · ${mbtiType} | DemoPPI 共识网络`
-    : `${name} | DemoPPI 共识网络`;
+    ? `${name} · ${mbtiType} | Genzer Terminal 共识网络`
+    : `${name} | Genzer Terminal 共识网络`;
   const description = mbtiType
-    ? `${name} 是 ${mbtiType} 型人格${city ? "，来自" + city : ""}。在 DemoPPI 找到你的共识圈。`
-    : `${name} 在 DemoPPI 的个人名片。基于共识的超级个体身份主权社区。`;
+    ? `${name} 是 ${mbtiType} 型人格${city ? "，来自" + city : ""}。在 Genzer Terminal 找到你的共识圈。`
+    : `${name} 在 Genzer Terminal 的个人名片。共识网络自治节点。`;
+
 
   return {
     title,
@@ -65,7 +66,7 @@ export async function generateMetadata({
         },
       ],
       type: "profile",
-      siteName: "DemoPPI",
+      siteName: "Genzer Terminal",
     },
     twitter: {
       card: "summary_large_image",

@@ -25,7 +25,7 @@ const tiers = [
   {
     id: "free",
     name: "社区成员",
-    subtitle: "DemoPPI 共识网络",
+    subtitle: "Genzer Terminal 共识网络",
     price: "¥0",
     period: "永久免费",
     description: "创建你的共识名片，发现志同道合的人",
@@ -201,7 +201,7 @@ export function PricingPageContent({
           免费版是社区的大门——发现同道、建立连接。付费版是社区的方向盘——发起提案、参与投票、塑造未来。
         </p>
         <div className="flex items-center justify-center gap-3 mt-4 text-sm">
-          <span className="text-muted-foreground">DemoPPI</span>
+          <span className="text-muted-foreground">Genzer Terminal</span>
           <ArrowRight className="w-4 h-4 text-muted-foreground" />
           <span className="font-medium flex items-center gap-1">
             <Sparkles className="w-4 h-4 text-primary" />

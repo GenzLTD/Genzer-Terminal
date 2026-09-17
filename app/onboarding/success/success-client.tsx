@@ -122,7 +122,7 @@ export function SuccessPageClient({ name }: SuccessPageClientProps) {
 
       {/* 底部提示 */}
       <p className="text-center text-xs text-muted-foreground mt-8">
-        同一账号可在 DemoPPI 和 Tatha 之间无缝切换 ·
+        同一账号可在 Genzer Terminal 和 Tatha 之间无缝切换 ·
         免费版配额充足，不构成使用障碍
       </p>
     </div>

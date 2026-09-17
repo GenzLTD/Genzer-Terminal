@@ -1,5 +1,5 @@
 /**
- * DemoPPI 小程序 — HTTP 请求封装
+ * Genzer Terminal 小程序 — HTTP 请求封装
  * 借鉴 zervi-test 的 utils/http.js + iot-smart-control 的 utils/request.js
  *
  * 核心能力：

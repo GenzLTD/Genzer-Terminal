@@ -1,5 +1,5 @@
 /**
- * DemoPPI — 小程序桥接工具
+ * Genzer Terminal — 小程序桥接工具
  *
  * 在 web-view 中运行的 H5 页面，通过 wx.miniProgram API
  * 与小程序原生层通信。
@@ -69,7 +69,7 @@ export function setShareData(options: {
   mbti?: string;
 }): void {
   const shareData = {
-    title: options.title || 'DemoPPI — 找到你的共识圈',
+    title: options.title || 'Genzer Terminal — 共识网络自治节点',
     imageUrl: options.imageUrl || '',
     path: options.path || `/pages/webview/index?entry=share&mbti=${options.mbti || ''}`,
     mbti: options.mbti || '',
@@ -185,7 +185,7 @@ export function initMiniProgramBridge(): void {
   // 如果小程序传来了 token，同步到 H5 的 localStorage
   if (mpParams.token) {
     try {
-      // 这里使用 DemoPPI 的 supabase client 设置 token
+      // 这里使用 Genzer Terminal 的 supabase client 设置 token
       // 实际项目中可能需要适配你的认证方案
       console.log('[MPBridge] 收到小程序 token，长度:', mpParams.token.length);
     } catch (e) {
@@ -195,7 +195,7 @@ export function initMiniProgramBridge(): void {
 
   // 设置默认分享数据
   setShareData({
-    title: 'DemoPPI — 找到你的共识圈',
+    title: 'Genzer Terminal — 共识网络自治节点',
   });
 
   console.log('[MPBridge] 初始化完成，参数:', mpParams);

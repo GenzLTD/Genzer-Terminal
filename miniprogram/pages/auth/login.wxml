@@ -1,20 +1,20 @@
 <!--
-  DemoPPI 小程序 — 登录页
+  Genzer Terminal 小程序 — 登录页
   两步流程：1) 验证邀请码 2) 微信一键登录
 -->
 <view class="login-page">
   <!-- 顶部品牌区 -->
   <view class="brand-section">
-    <view class="brand-logo">D</view>
-    <view class="brand-name">DemoPPI</view>
-    <view class="brand-slogan">找到你的共识圈</view>
+    <view class="brand-logo">G</view>
+    <view class="brand-name">Genzer Terminal</view>
+    <view class="brand-slogan">共识网络自治节点</view>
   </view>
 
   <!-- Step 1: 输入邀请码 -->
   <view class="form-section" wx:if="{{step === 1}}">
     <view class="section-title">邀请码</view>
     <view class="section-desc">
-      DemoPPI 是邀请制社区，请输入邀请码加入
+      Genzer Terminal 是邀请制社区，请输入邀请码加入
     </view>
 
     <van-field

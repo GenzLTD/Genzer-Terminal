@@ -1,5 +1,5 @@
 {
-  "name": "kungfu",
+  "name": "genzer-terminal",
   "private": true,
   "engines": {
     "node": ">=20.0.0"

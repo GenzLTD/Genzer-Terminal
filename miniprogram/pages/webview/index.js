@@ -1,8 +1,8 @@
 /**
- * DemoPPI 小程序 — web-view 主页
+ * Genzer Terminal 小程序 — web-view 主页
  *
  * 核心功能：
- * 1. 加载 DemoPPI H5 页面
+ * 1. 加载 Genzer Terminal H5 页面
  * 2. postMessage 通信桥接（H5 ↔ 小程序）
  * 3. onShareAppMessage 分享钩子（动态卡片图）
  * 4. URL 参数透传（邀请码、entry 等）

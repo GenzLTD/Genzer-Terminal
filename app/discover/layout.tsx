@@ -15,7 +15,7 @@ export default function DiscoverLayout({
       <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16">
         <div className="w-full max-w-5xl flex justify-between items-center p-3 px-5 text-sm">
           <div className="flex gap-4 items-center font-semibold">
-            <Link href="/">Kungfu</Link>
+            <Link href="/">Genzer</Link>
             <Link
               href="/discover"
               className="text-primary"

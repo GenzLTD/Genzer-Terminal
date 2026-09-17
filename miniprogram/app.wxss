@@ -1,4 +1,4 @@
-/* 全局样式 — DemoPPI 小程序薄壳 */
+/* 全局样式 — Genzer Terminal 小程序 */
 page {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   background-color: #f5f5f5;

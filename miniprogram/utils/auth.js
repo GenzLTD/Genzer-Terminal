@@ -1,10 +1,10 @@
 /**
- * DemoPPI 小程序 — 权限管理
+ * Genzer Terminal 小程序 — 权限管理
  * 借鉴 iot-smart-control 的 utils/auth.js 权限矩阵
  *
  * 权限等级映射：
  *   iot:      OWNER → ADMIN → MEMBER → GUEST
- *   DemoPPI:  founder → paid → free → visitor
+ *   Genzer:   founder → paid → free → visitor
  *
  * 功能定义：
  *   visitor: 只能看登录页

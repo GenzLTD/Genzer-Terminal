@@ -18,7 +18,7 @@ export default function ProtectedLayout({
           <div className="w-full max-w-5xl flex justify-between items-center p-3 px-5 text-sm">
             <div className="flex gap-5 items-center font-semibold">
               <div className="flex gap-4">
-                <Link href={"/"}>Kungfu</Link>
+                <Link href={"/"}>Genzer</Link>
                 <Link href={"/discover"} className="text-muted-foreground hover:text-foreground">
                   发现
                 </Link>

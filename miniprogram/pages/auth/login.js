@@ -1,5 +1,5 @@
 /**
- * DemoPPI 小程序 — 登录页
+ * Genzer Terminal 小程序 — 登录页
  *
  * 登录方式：
  * 1. 微信一键登录（wx.login → 后端换 token）
@@ -152,7 +152,7 @@ Page({
    */
   onShareAppMessage() {
     return {
-      title: 'DemoPPI — 找到你的共识圈',
+      title: 'Genzer Terminal — 共识网络自治节点',
       path: '/pages/auth/login',
     };
   },

@@ -1,5 +1,5 @@
 <!--
-  DemoPPI 小程序 — web-view 主页
+  Genzer Terminal 小程序 — web-view 主页
   全屏加载 H5，无原生导航栏（由 H5 自行控制）
 -->
 <web-view

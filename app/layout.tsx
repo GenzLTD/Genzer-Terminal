@@ -9,8 +9,8 @@ const defaultUrl = process.env.VERCEL_URL
 
 export const metadata: Metadata = {
   metadataBase: new URL(defaultUrl),
-  title: "Kungfu | 共识网络",
-  description: "基于共识的超级个体身份主权社区",
+  title: "Genzer Terminal | 共识网络自治节点",
+  description: "Zervi-Genzer 共识网络软件终端 — 为 Ctrl4U 穿戴硬件提供身份与信号基础设施",
 };
 
 const geistSans = Geist({

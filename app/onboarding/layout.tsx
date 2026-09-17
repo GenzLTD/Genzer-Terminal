@@ -10,7 +10,7 @@ export default function OnboardingLayout({
       <header className="border-b border-border/40 py-4">
         <div className="container max-w-2xl mx-auto px-4 flex justify-between items-center">
           <Link href="/" className="font-semibold text-lg">
-            Kungfu
+            Genzer
           </Link>
           <span className="text-sm text-muted-foreground">创建你的名片</span>
         </div>

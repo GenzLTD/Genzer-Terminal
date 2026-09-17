@@ -23,7 +23,7 @@ export const MBTI_DATA: Record<
     careers: "战略顾问、架构师、科学家、投资分析师",
     matches: ["ENFP", "ENTP"],
     description:
-      "INTJ 是罕见的战略型人格，仅占人口约 2%。他们以独立思考和对知识的渴望著称，善于制定长期计划并坚定执行。在 DemoPPI 的共识社区中，INTJ 常常是提出系统性方案的治理参与者。",
+      "INTJ 是罕见的战略型人格，仅占人口约 2%。他们以独立思考和对知识的渴望著称，善于制定长期计划并坚定执行。在 Genzer Terminal 的共识社区中，INTJ 常常是提出系统性方案的治理参与者。",
     color: "#5B5EA6",
   },
   INTP: {
@@ -34,7 +34,7 @@ export const MBTI_DATA: Record<
     careers: "程序员、研究员、数据科学家、哲学家",
     matches: ["ENTJ", "ENFJ"],
     description:
-      "INTP 是追求真理的逻辑探索者，他们的大脑是一台永不停歇的分析引擎。INTP 热衷于理解世界运转的底层逻辑，在 DemoPPI 中，他们常常是深度讨论的发起者。",
+      "INTP 是追求真理的逻辑探索者，他们的大脑是一台永不停歇的分析引擎。INTP 热衷于理解世界运转的底层逻辑，在 Genzer Terminal 中，他们常常是深度讨论的发起者。",
     color: "#7B68AE",
   },
   ENTJ: {
@@ -45,7 +45,7 @@ export const MBTI_DATA: Record<
     careers: "CEO、律师、创业者、项目总监",
     matches: ["INFP", "INTP"],
     description:
-      "ENTJ 是天生的领袖，善于制定战略并带领团队实现目标。他们果断、高效，在 DemoPPI 的社区治理中，ENTJ 常常是最积极的提案发起者。",
+      "ENTJ 是天生的领袖，善于制定战略并带领团队实现目标。他们果断、高效，在 Genzer Terminal 的社区治理中，ENTJ 常常是最积极的提案发起者。",
     color: "#C0392B",
   },
   ENTP: {
@@ -56,7 +56,7 @@ export const MBTI_DATA: Record<
     careers: "创业者、产品经理、记者、咨询顾问",
     matches: ["INFJ", "INTJ"],
     description:
-      "ENTP 是充满创意的挑战者，他们享受智力激荡，善于发现常规之外的可能性。在 DemoPPI 中，ENTP 是社区讨论中最活跃的火花。",
+      "ENTP 是充满创意的挑战者，他们享受智力激荡，善于发现常规之外的可能性。在 Genzer Terminal 中，ENTP 是社区讨论中最活跃的火花。",
     color: "#E67E22",
   },
   INFJ: {
@@ -67,7 +67,7 @@ export const MBTI_DATA: Record<
     careers: "心理咨询师、作家、社工、教育家",
     matches: ["ENTP", "ENFP"],
     description:
-      "INFJ 是最稀有的人格类型之一，仅占约 1%。他们兼具理想主义和行动力，在 DemoPPI 的共识社区中，INFJ 常常是精神领袖般的存在。",
+      "INFJ 是最稀有的人格类型之一，仅占约 1%。他们兼具理想主义和行动力，在 Genzer Terminal 的共识社区中，INFJ 常常是精神领袖般的存在。",
     color: "#27AE60",
   },
   INFP: {
@@ -78,7 +78,7 @@ export const MBTI_DATA: Record<
     careers: "作家、设计师、心理咨询师、艺术家",
     matches: ["ENTJ", "ENFJ"],
     description:
-      "INFP 是温柔的理想主义者，他们以强烈的内在价值观导航人生。在 DemoPPI 中，INFP 常常是社区文化的守护者和最真诚的倾听者。",
+      "INFP 是温柔的理想主义者，他们以强烈的内在价值观导航人生。在 Genzer Terminal 中，INFP 常常是社区文化的守护者和最真诚的倾听者。",
     color: "#2ECC71",
   },
   ENFJ: {
@@ -89,7 +89,7 @@ export const MBTI_DATA: Record<
     careers: "教师、HR、社工、公关",
     matches: ["INTP", "INFP"],
     description:
-      "ENFJ 是天生的连接者，他们善于感知他人需求并创造共鸣。在 DemoPPI 的共识社区中，ENFJ 是最有感染力的社区组织者。",
+      "ENFJ 是天生的连接者，他们善于感知他人需求并创造共鸣。在 Genzer Terminal 的共识社区中，ENFJ 是最有感染力的社区组织者。",
     color: "#E84393",
   },
   ENFP: {
@@ -100,7 +100,7 @@ export const MBTI_DATA: Record<
     careers: "记者、演员、创业者、创意总监",
     matches: ["INTJ", "INFJ"],
     description:
-      "ENFP 是充满活力的自由灵魂，他们用热情点燃周围的每一个人。在 DemoPPI 中，ENFP 是社交裂变的核心引擎。",
+      "ENFP 是充满活力的自由灵魂，他们用热情点燃周围的每一个人。在 Genzer Terminal 中，ENFP 是社交裂变的核心引擎。",
     color: "#F39C12",
   },
   ISTJ: {
@@ -111,7 +111,7 @@ export const MBTI_DATA: Record<
     careers: "审计师、工程师、公务员、项目经理",
     matches: ["ESFP", "ESTP"],
     description:
-      "ISTJ 是最可靠的人格类型之一，他们以务实和责任心著称。在 DemoPPI 的社区治理中，ISTJ 是提案执行的保障。",
+      "ISTJ 是最可靠的人格类型之一，他们以务实和责任心著称。在 Genzer Terminal 的社区治理中，ISTJ 是提案执行的保障。",
     color: "#2C3E50",
   },
   ISFJ: {
@@ -122,7 +122,7 @@ export const MBTI_DATA: Record<
     careers: "护士、教师、行政、社工",
     matches: ["ESTP", "ESFP"],
     description:
-      "ISFJ 是温暖而忠诚的守护者，他们默默为社区付出。在 DemoPPI 中，ISFJ 是社区凝聚力的基石。",
+      "ISFJ 是温暖而忠诚的守护者，他们默默为社区付出。在 Genzer Terminal 中，ISFJ 是社区凝聚力的基石。",
     color: "#16A085",
   },
   ESTJ: {
@@ -133,7 +133,7 @@ export const MBTI_DATA: Record<
     careers: "管理者、军官、律师、财务总监",
     matches: ["ISFP", "ISTP"],
     description:
-      "ESTJ 是天生的高效组织者，他们善于制定规则并确保执行。在 DemoPPI 的社区治理中，ESTJ 是制度建设的推动者。",
+      "ESTJ 是天生的高效组织者，他们善于制定规则并确保执行。在 Genzer Terminal 的社区治理中，ESTJ 是制度建设的推动者。",
     color: "#C0392B",
   },
   ESFJ: {
@@ -144,7 +144,7 @@ export const MBTI_DATA: Record<
     careers: "教师、HR、医疗、销售",
     matches: ["ISTP", "ISFP"],
     description:
-      "ESFJ 是温暖而务实的社交家，他们天生善于照顾他人需求。在 DemoPPI 中，ESFJ 是社区氛围的营造者。",
+      "ESFJ 是温暖而务实的社交家，他们天生善于照顾他人需求。在 Genzer Terminal 中，ESFJ 是社区氛围的营造者。",
     color: "#D35400",
   },
   ISTP: {
@@ -155,7 +155,7 @@ export const MBTI_DATA: Record<
     careers: "工程师、飞行员、侦探、外科医生",
     matches: ["ESFJ", "ESTJ"],
     description:
-      "ISTP 是冷静而灵活的问题解决者，他们善于在压力下找到实用的解决方案。在 DemoPPI 中，ISTP 是技术讨论的中坚力量。",
+      "ISTP 是冷静而灵活的问题解决者，他们善于在压力下找到实用的解决方案。在 Genzer Terminal 中，ISTP 是技术讨论的中坚力量。",
     color: "#34495E",
   },
   ISFP: {
@@ -166,7 +166,7 @@ export const MBTI_DATA: Record<
     careers: "设计师、音乐家、摄影师、厨师",
     matches: ["ESTJ", "ESFJ"],
     description:
-      "ISFP 是安静而富有创造力的艺术家，他们用行动而非言语表达自我。在 DemoPPI 中，ISFP 为社区带来独特的美学视角。",
+      "ISFP 是安静而富有创造力的艺术家，他们用行动而非言语表达自我。在 Genzer Terminal 中，ISFP 为社区带来独特的美学视角。",
     color: "#1ABC9C",
   },
   ESTP: {
@@ -177,7 +177,7 @@ export const MBTI_DATA: Record<
     careers: "企业家、销售、运动员、急救人员",
     matches: ["ISFJ", "ISTJ"],
     description:
-      "ESTP 是充满活力的行动派，他们善于在现实中找到机会并果断出击。在 DemoPPI 中，ESTP 是社区活动的推动者。",
+      "ESTP 是充满活力的行动派，他们善于在现实中找到机会并果断出击。在 Genzer Terminal 中，ESTP 是社区活动的推动者。",
     color: "#E74C3C",
   },
   ESFP: {
@@ -188,7 +188,7 @@ export const MBTI_DATA: Record<
     careers: "演员、导游、活动策划、销售",
     matches: ["ISTJ", "ISFJ"],
     description:
-      "ESFP 是充满热情的乐天派，他们天生善于营造快乐氛围。在 DemoPPI 中，ESFP 是社区活力的源泉。",
+      "ESFP 是充满热情的乐天派，他们天生善于营造快乐氛围。在 Genzer Terminal 中，ESFP 是社区活力的源泉。",
     color: "#FF6B6B",
   },
 };

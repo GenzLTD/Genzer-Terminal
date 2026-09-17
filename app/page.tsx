@@ -10,7 +10,7 @@ export default function Home() {
       <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16">
         <div className="w-full max-w-5xl flex justify-between items-center px-5 text-sm">
           <div className="flex gap-5 items-center font-semibold">
-            <Link href={"/"}>DemoPPI</Link>
+            <Link href={"/"}>Genzer</Link>
           </div>
           <Suspense>
             <AuthButton />
@@ -22,16 +22,16 @@ export default function Home() {
       <section className="flex-1 flex flex-col items-center justify-center gap-8 px-5 py-32 text-center">
         <div className="flex flex-col gap-4 items-center">
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight">
-            共识网络
+            Genzer Terminal
           </h1>
           <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl">
-            基于价值观匹配的超级个体身份主权社区
+            共识网络自治节点 — 身份 · 信号 · 信任
           </p>
         </div>
 
         <p className="max-w-lg text-muted-foreground leading-relaxed">
-          不靠算法推荐，不靠粉丝数排序。DemoPPI
-          通过逐层递进的身份协议，让你被真正理解你的人发现。
+          Zervi-Genzer 共识网络的软件终端节点。通过信号协议与共识匹配，
+          为 Ctrl4U 穿戴硬件提供身份与信任基础设施。
         </p>
 
         <div className="flex gap-4 mt-4">
@@ -80,7 +80,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="w-full flex items-center justify-center border-t border-foreground/10 mx-auto text-center text-xs gap-8 py-12 px-5">
-        <p className="text-muted-foreground">DemoPPI · 共识网络</p>
+        <p className="text-muted-foreground">Genzer Terminal · 共识网络自治节点</p>
         <p className="text-muted-foreground">
           Powered by{" "}
           <a

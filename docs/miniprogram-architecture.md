@@ -1,9 +1,13 @@
-# DemoPPI 微信小程序架构设计文档
+# Genzer Terminal 微信小程序架构设计文档
 
-> 版本：v1.0
-> 日期：2025-06-27
-> 作者：WeChat Mini Program Developer Agent
-> 项目路径：`D:/GitHub/szpeter2026/DemoPPI/`
+> **⚠️ 品牌变更注记（2026-07-16）：** 本项目已从 DemoPPI 正式更名为 **Genzer Terminal**。
+> 本文档为历史架构设计文档，内容保留原貌。文中所有「DemoPPI」的引用在实际代码中已替换为「Genzer Terminal」。
+> 详见 `docs/strategy.md §9 — 品牌转型决策`。
+
+> 版本：v1.0（原文日期：2025-06-27）  
+> 作者：WeChat Mini Program Developer Agent  
+> 原项目路径：`D:/GitHub/szpeter2026/DemoPPI/`  
+> 当前路径：`/Users/jason/Projects/DemoPPI/`
 
 ---
 
@@ -682,4 +686,5 @@ onShareTimeline() {
 
 ---
 
-> 本文档基于 DemoPPI 项目现有代码分析生成，所有 API 路径和功能设计均基于已实现的后端接口。架构方案优先考虑「快速上线」和「微信生态原生体验」。
+> 本文档基于原 DemoPPI（现 Genzer Terminal）项目代码分析生成，所有 API 路径和功能设计均基于已实现的后端接口。架构方案优先考虑「快速上线」和「微信生态原生体验」。
+> **品牌变更注记**：2026-07-16 起项目已更名为 Genzer Terminal，实际代码中所有品牌引用已同步更新。

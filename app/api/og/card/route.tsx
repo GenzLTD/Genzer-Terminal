@@ -99,7 +99,7 @@ export async function GET(request: NextRequest) {
               D
             </div>
             <span style={{ fontSize: "20px", fontWeight: 600, color: "#1a1a2e" }}>
-              DemoPPI
+              Genzer
             </span>
             <span style={{ fontSize: "14px", color: "#888", marginLeft: "4px" }}>
               共识网络
@@ -290,7 +290,7 @@ export async function GET(request: NextRequest) {
           }}
         >
           <div style={{ fontSize: "14px", color: "#999" }}>
-            找到你的共识圈 → demoppi.app/p/{username ?? ""}
+            找到你的共识圈 → genzer.app/p/{username ?? ""}
           </div>
           <div
             style={{

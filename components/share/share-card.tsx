@@ -144,7 +144,7 @@ export function ShareCard({
       ? `${new URL(ogImageUrl, shareUrl).href}`
       : ogImageUrl;
     mpSetShareData({
-      title: `我是 ${mbtiType}，来 DemoPPI 找到你的共识圈`,
+      title: `我是 ${mbtiType}，来 Genzer Terminal 找到你的共识圈`,
       imageUrl: fullOgUrl,
       mbti: mbtiType,
     });
@@ -159,7 +159,7 @@ export function ShareCard({
         ? `${new URL(ogImageUrl, shareUrl).href}`
         : ogImageUrl;
       mpSetShareData({
-        title: `我是 ${mbtiType}，来 DemoPPI 找到你的共识圈`,
+        title: `我是 ${mbtiType}，来 Genzer Terminal 找到你的共识圈`,
         imageUrl: fullOgUrl,
         mbti: mbtiType,
       });
@@ -194,9 +194,9 @@ export function ShareCard({
                   className="w-7 h-7 rounded-md flex items-center justify-center text-white text-sm font-bold"
                   style={{ background: colors.primary }}
                 >
-                  D
+                  G
                 </div>
-                <span className="text-base font-semibold text-gray-800">DemoPPI</span>
+                <span className="text-base font-semibold text-gray-800">Genzer</span>
                 <span className="text-xs text-gray-400">共识网络</span>
               </div>
               {mbtiType && (

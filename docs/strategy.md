@@ -141,4 +141,32 @@
 
 ---
 
+---
+
+## 9. 品牌转型决策（2026-07-16）
+
+**结论：** DemoPPI (kungfu) 正式转型为「Genzer Terminal — 共识网络自治节点」。
+
+**背景：** 上游 `szpeter2026/DemoPPI` 自 2026-06-06 起停滞 40 天。团队决定 fork 自主接管。
+
+**变更范围（20 文件）：**
+
+| 维度 | 旧值 | 新值 |
+|------|------|------|
+| package.json name | `kungfu` | `genzer-terminal` |
+| 品牌标题 | "Kungfu \| 共识网络" | "Genzer Terminal \| 共识网络自治节点" |
+| 域名 | demoppi.com / demoppi.app | genzer.app |
+| 小程序标题 | DemoPPI | Genzer Terminal |
+| 种子邀请码 | DEMOPPI2026 | GENZER2026 |
+| 对外描述 | "基于价值观匹配的超级个体身份主权社区" | "共识网络自治节点 — 身份 · 信号 · 信任" |
+| 导航 Logo 字母 | D | G |
+
+**定位变更：** 从「社区 MVP」升级为「Zervi-Genzer 共识网络的软件终端节点」，为 Phase 3 Ctrl4U 穿戴硬件预备身份与信号基础设施。
+
+**生态对齐链：** `genzer-contracts → Genzer Terminal（本仓库）→ PlanetX → Ctrl4U`
+
+**来源：** `TEAM_DISCUSSION_GENZER_TERMINAL_2026-07-12.md` / Phase 0 实施记录
+
+---
+
 *本文件是「拿来主义」摘取，非完整文档。完整战略见 `p4zrht9hpm-sketch/progressive-professional-identity`。*

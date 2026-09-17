@@ -4,9 +4,9 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
-  title: "16 种 MBTI 人格类型 | DemoPPI 共识网络",
+  title: "16 种 MBTI 人格类型 | Genzer Terminal 共识网络",
   description:
-    "了解 MBTI 16 种人格类型的特质、优势和职业方向。在 DemoPPI 共识社区找到与你价值观匹配的同道中人。",
+    "了解 MBTI 16 种人格类型的特质、优势和职业方向。在 Genzer Terminal 共识社区找到与你价值观匹配的同道中人。",
   keywords: [
     "MBTI",
     "人格类型",
@@ -94,8 +94,8 @@ export default function MBTIOverviewPage() {
         <h2 className="text-2xl font-bold mb-3">
           找到你的共识圈
         </h2>
-        <p className="text-muted-foreground mb-6">
-          在 DemoPPI，MBTI 不只是标签——它是共识匹配的起点。
+          <p className="text-muted-foreground mb-6">
+          在 Genzer Terminal，MBTI 不只是标签——它是共识匹配的起点。
         </p>
         <Link href="/auth/sign-up">
           <Button size="lg">免费创建 MBTI 名片</Button>

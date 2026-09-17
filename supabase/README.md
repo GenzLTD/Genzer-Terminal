@@ -1,6 +1,6 @@
 # Supabase 数据库文档
 
-项目：DemoPPI（共识网络 + 社区自治基础设施）  
+项目：Genzer Terminal（Zervi-Genzer 共识网络软件终端 · 前身为 DemoPPI）  
 Supabase Project URL：`https://acozjhpjidrucqonpkey.supabase.co`
 
 > **核心理念**：配额仅防刷滥用，治理权才是免费/付费的核心差异化。  

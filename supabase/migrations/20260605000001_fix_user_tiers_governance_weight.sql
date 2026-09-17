@@ -1,6 +1,6 @@
 -- ============================================================
 -- 修复 user_tiers.governance_weight 列：添加 not null + default
--- 对齐 DemoPPI_complete_init_v1.0.sql 定义
+-- 对齐 genzer_terminal_init_v1.0.sql 定义
 -- ============================================================
 
 -- generated always as 列不能直接 ALTER ... SET DEFAULT，

@@ -1,5 +1,5 @@
 /**
- * DemoPPI 小程序 — 本地存储管理
+ * Genzer Terminal 小程序 — 本地存储管理
  * 借鉴 iot-smart-control 的 utils/storage.js
  *
  * 核心能力：

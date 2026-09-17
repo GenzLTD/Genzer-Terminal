@@ -20,8 +20,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const data = MBTI_DATA[key];
   if (!data) return { title: "MBTI 类型不存在" };
 
-  const title = `${key} ${data.name} (${data.nickname}) | DemoPPI 共识网络`;
-  const description = `${data.description.slice(0, 120)}...在 DemoPPI 找到与你价值观匹配的同道中人。`;
+  const title = `${key} ${data.name} (${data.nickname}) | Genzer Terminal 共识网络`;
+  const description = `${data.description.slice(0, 120)}...在 Genzer Terminal 找到与你价值观匹配的同道中人。`;
 
   return {
     title,
@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title,
       description,
       type: "website",
-      siteName: "DemoPPI",
+      siteName: "Genzer Terminal",
     },
     keywords: [
       key,
@@ -219,7 +219,7 @@ export default async function MBTITypePage({ params }: PageProps) {
             你是 {key} 吗？
           </h2>
           <p className="text-muted-foreground mb-6">
-            加入 DemoPPI，找到与你价值观共鸣的同道中人
+            加入 Genzer Terminal，找到与你价值观共鸣的同道中人
           </p>
           <div className="flex justify-center gap-4">
             <Link href="/auth/sign-up">
