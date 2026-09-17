@@ -50,17 +50,15 @@ export async function GET(request: NextRequest) {
     );
   }
 
-  // 顺带清理过期超过 1 天的旧码（非阻塞失败不影响主流程）
+  // 顺带清理过期超过 1 天的旧码（非阻塞，失败不得影响主流程）
   // 注意：supabase-js v2 的 PostgrestFilterBuilder 是 thenable 而非 Promise，
-  // 没有 .catch 方法 —— 用解构 error 忽略即可
-  await supabaseAdmin
-    .from("auth_exchange_codes")
-    .delete()
-    .lt("expires_at", new Date(Date.now() - 24 * 3600 * 1000).toISOString())
-    .then(
-      () => undefined,
-      () => undefined
-    );
+  // 直接链 .catch 会 TypeError。包进 Promise.resolve 转成真 Promise 再吞掉拒绝。
+  await Promise.resolve(
+    supabaseAdmin
+      .from("auth_exchange_codes")
+      .delete()
+      .lt("expires_at", new Date(Date.now() - 24 * 3600 * 1000).toISOString())
+  ).catch(() => undefined);
 
   // Step 2: verifyOtp 建立真实 session（cookie 写入）
   const supabase = await createClient();

@@ -122,8 +122,17 @@ export async function POST(request: Request) {
         console.warn("[Auth/MP] 微信配置缺失，使用 mock openid");
       }
       isMock = true;
-      openid = `mock_wx_${Date.now()}_${randomBytes(4).toString("hex")}`;
-      unionid = `mock_union_${openid}`;
+      // 固定 mock 身份（MOCK_WX_OPENID）：用于联调「既有用户二次登录」路径——
+      // 第二次登录必须命中 user_identities（unionid 优先）返回 is_new:false。
+      // 不设置则每次随机 openid（每次都是新用户，测不了匹配逻辑）。
+      const fixedOpenid = process.env.MOCK_WX_OPENID?.trim();
+      if (fixedOpenid) {
+        openid = fixedOpenid;
+        unionid = `mock_union_${fixedOpenid}`;
+      } else {
+        openid = `mock_wx_${Date.now()}_${randomBytes(4).toString("hex")}`;
+        unionid = `mock_union_${openid}`;
+      }
     } else {
       const wxUrl = `https://api.weixin.qq.com/sns/jscode2session?appid=${WX_APPID}&secret=${WX_SECRET}&js_code=${code}&grant_type=authorization_code`;
       const wxRes = await fetch(wxUrl);
