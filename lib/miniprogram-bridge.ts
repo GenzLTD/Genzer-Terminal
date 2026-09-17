@@ -10,7 +10,7 @@
  * 3. 分享桥接（H5 设置分享数据 → 小程序 onShareAppMessage 读取）
  * 4. 页面跳转（H5 请求小程序原生页面跳转）
  * 5. 登录桥接（H5 请求小程序原生登录）
- * 6. URL 参数读取（小程序传来的 token、tier 等）
+ * 6. URL 参数读取（小程序传来的 exchange_code、tier 等）
  */
 
 /**
@@ -142,10 +142,13 @@ export function requestLogout(): void {
 
 /**
  * 读取小程序通过 URL 传递的参数
- * 包括：miniprogram_token、tier、source、entry、invite_code、mbti
+ * 包括：exchange_code、tier、source、entry、invite_code、mbti
+ *
+ * SSO P0（v1.1）：miniprogram_token 已废弃（D3 假 token 链路移除），
+ * 新链路为小程序传 exchange_code → H5 跳 /auth/exchange 建会话。
  */
 export function getMiniProgramParams(): {
-  token?: string;
+  exchangeCode?: string;
   tier?: string;
   source?: string;
   entry?: string;
@@ -160,7 +163,7 @@ export function getMiniProgramParams(): {
   const params = new URLSearchParams(window.location.search);
 
   return {
-    token: params.get('miniprogram_token') || undefined,
+    exchangeCode: params.get('exchange_code') || undefined,
     tier: params.get('tier') || undefined,
     source: params.get('source') || undefined,
     entry: params.get('entry') || undefined,
@@ -174,7 +177,7 @@ export function getMiniProgramParams(): {
  * 初始化小程序桥接
  * 在 H5 页面加载时调用：
  * 1. 检测是否在小程序环境
- * 2. 如果有 token 参数，自动设置到 localStorage
+ * 2. 如果有 exchange_code，跳转 /auth/exchange 换取真实 cookie session（D4 修复）
  * 3. 设置默认分享数据
  */
 export function initMiniProgramBridge(): void {
@@ -182,15 +185,12 @@ export function initMiniProgramBridge(): void {
 
   const mpParams = getMiniProgramParams();
 
-  // 如果小程序传来了 token，同步到 H5 的 localStorage
-  if (mpParams.token) {
-    try {
-      // 这里使用 Genzer Terminal 的 supabase client 设置 token
-      // 实际项目中可能需要适配你的认证方案
-      console.log('[MPBridge] 收到小程序 token，长度:', mpParams.token.length);
-    } catch (e) {
-      console.warn('[MPBridge] Token 同步失败:', e);
-    }
+  // SSO P0：一次性交换码 → 后端建会话（60s 过期，失败落 /auth/error）
+  if (mpParams.exchangeCode) {
+    window.location.replace(
+      `/auth/exchange?code=${encodeURIComponent(mpParams.exchangeCode)}`
+    );
+    return; // 页面即将跳转，无需继续初始化
   }
 
   // 设置默认分享数据
