@@ -37,8 +37,7 @@ export async function GET(request: NextRequest) {
         voting_ends_at,
         execution_data,
         created_at,
-        updated_at,
-        profiles:proposer_id(username, display_name)
+        updated_at
       `)
       .order("created_at", { ascending: false })
       .range(offset, offset + limit - 1);
@@ -56,9 +55,25 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: error.message }, { status: 500 });
     }
 
+    // 提案人信息改为独立批量查询。
+    // 此前的嵌套 join（profiles:proposer_id(...)）依赖数据库外键关系，
+    // Supabase 项目缺少该 FK 时 PostgREST schema cache 解析失败 → 整个接口 500（P0-4）。
+    // 拆开查询不依赖 schema 关系，且失败时仅降级为无提案人信息，不再炸整个列表。
+    const proposerIds = [...new Set((data || []).map((p: Record<string, unknown>) => p.proposer_id as string).filter(Boolean))];
+    const profilesById: Record<string, { username: string | null; display_name: string | null }> = {};
+    if (proposerIds.length > 0) {
+      const { data: proposerProfiles } = await supabase
+        .from("profiles")
+        .select("id, username, display_name")
+        .in("id", proposerIds);
+      for (const p of proposerProfiles || []) {
+        profilesById[p.id] = { username: p.username, display_name: p.display_name };
+      }
+    }
+
     // 为每个提案附上投票统计
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const proposalsWithStats = await Promise.all(
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       (data || []).map(async (proposal: Record<string, any>) => {
         const { data: votes } = await supabase
           .from("governance_votes")
@@ -91,7 +106,12 @@ export async function GET(request: NextRequest) {
           }
         );
 
-        return { ...proposal, vote_stats: stats };
+        return {
+          ...proposal,
+          // 保持与原嵌套 join 相同的返回形状（profiles 为单个对象）
+          profiles: profilesById[proposal.proposer_id] ?? null,
+          vote_stats: stats,
+        };
       })
     );
 
