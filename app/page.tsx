@@ -39,7 +39,7 @@ export default function Home() {
             href="/auth/sign-up"
             className="bg-foreground text-background px-6 py-3 rounded-lg font-medium hover:opacity-90 transition"
           >
-            开始使用
+            邀请码注册
           </Link>
           <Link
             href="/discover"
@@ -48,6 +48,17 @@ export default function Home() {
             探索社区
           </Link>
         </div>
+
+        <p className="text-sm text-muted-foreground">
+          本网络为邀请制：注册需要老成员的邀请码。暂无邀请码？{" "}
+          <a
+            href="https://genz.ltd"
+            className="underline underline-offset-4 hover:text-foreground"
+          >
+            访问 GenZ 了解生态与产品
+          </a>
+          ，或联系已有成员获取邀请。
+        </p>
       </section>
 
       {/* Principles */}
@@ -79,26 +90,32 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="w-full flex items-center justify-center border-t border-foreground/10 mx-auto text-center text-xs gap-8 py-12 px-5">
+      <footer className="w-full flex flex-wrap items-center justify-center border-t border-foreground/10 mx-auto text-center text-xs gap-6 py-12 px-5">
         <p className="text-muted-foreground">Genzer Terminal · 共识网络自治节点</p>
-        <p className="text-muted-foreground">
-          Powered by{" "}
+        <p className="text-muted-foreground flex gap-4">
           <a
-            href="https://supabase.com"
-            target="_blank"
-            className="font-bold hover:underline"
-            rel="noreferrer"
+            href="https://genz.ltd"
+            className="hover:text-foreground hover:underline underline-offset-4"
           >
-            Supabase
+            GenZ PlanetX
           </a>
-          {" "} + {" "}
           <a
-            href="https://nextjs.org"
-            target="_blank"
-            className="font-bold hover:underline"
-            rel="noreferrer"
+            href="https://genz.ltd/legal/privacy"
+            className="hover:text-foreground hover:underline underline-offset-4"
           >
-            Next.js
+            隐私政策
+          </a>
+          <a
+            href="https://genz.ltd/legal/terms"
+            className="hover:text-foreground hover:underline underline-offset-4"
+          >
+            服务条款
+          </a>
+          <a
+            href="https://genz.ltd/legal/refund"
+            className="hover:text-foreground hover:underline underline-offset-4"
+          >
+            退款政策
           </a>
         </p>
         <ThemeSwitcher />
