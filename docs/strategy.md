@@ -1,6 +1,6 @@
 # 战略决策记录（从 PPI 文档摘取）
 
-> 来源：`p4zrht9hpm-sketch/progressive-professional-identity/docs/`
+> 来源：内部战略文档摘取（org 内可见，不入公开仓）
 > 摘取日期：2026-05-31
 > 原则：只记录决策结论，不重复文档
 
@@ -147,7 +147,7 @@
 
 **结论：** DemoPPI (kungfu) 正式转型为「Genzer Terminal — 共识网络自治节点」。
 
-**背景：** 上游 `szpeter2026/DemoPPI` 自 2026-06-06 起停滞 40 天。团队决定 fork 自主接管。
+**背景：** 上游项目长期停滞，团队决定 fork 自主接管。
 
 **变更范围（20 文件）：**
 
@@ -157,7 +157,7 @@
 | 品牌标题 | "Kungfu \| 共识网络" | "Genzer Terminal \| 共识网络自治节点" |
 | 域名 | demoppi.com / demoppi.app | genzer.app |
 | 小程序标题 | DemoPPI | Genzer Terminal |
-| 种子邀请码 | DEMOPPI2026 | GENZER2026 |
+| 种子邀请码 | `<seed-code-v1>`（已轮换） | `<seed-code-v2>`（勿在公开仓出现真实值） |
 | 对外描述 | "基于价值观匹配的超级个体身份主权社区" | "共识网络自治节点 — 身份 · 信号 · 信任" |
 | 导航 Logo 字母 | D | G |
 
@@ -169,4 +169,4 @@
 
 ---
 
-*本文件是「拿来主义」摘取，非完整文档。完整战略见 `p4zrht9hpm-sketch/progressive-professional-identity`。*
+*本文件是「拿来主义」摘取，非完整文档。完整战略见内部战略仓库（org 内可见）。*

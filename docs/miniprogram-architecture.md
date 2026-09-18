@@ -6,8 +6,8 @@
 
 > 版本：v1.0（原文日期：2025-06-27）  
 > 作者：WeChat Mini Program Developer Agent  
-> 原项目路径：`D:/GitHub/szpeter2026/DemoPPI/`  
-> 当前路径：`/Users/jason/Projects/DemoPPI/`
+> 原项目路径：`<本地工作副本路径>`  
+> 当前路径：`<本地工作副本路径>`
 
 ---
 

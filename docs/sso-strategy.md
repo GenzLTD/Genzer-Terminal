@@ -25,7 +25,7 @@ Genzer Terminal 目前存在 **Web（邮箱密码）** 与 **微信小程序（o
 | 项 | 状态 | 备注 |
 |---|---|---|
 | 生产域名 | ✅ | `https://www.genz.ltd`，HTTPS 正常 |
-| 登录链路 | ✅ | `zervi@genz.ltd` 登录后正确跳转 `/protected` |
+| 登录链路 | ✅ | owner 测试账号登录后正确跳转 `/protected` |
 | 数据库链路 | ✅ | Layer 0 名片、用户名均从 Supabase 读出 |
 | 会话持久化 | ✅ | 刷新后仍停留 `/protected` |
 | `NEXT_PUBLIC_SITE_URL` | ✅ | 已设为 `https://www.genz.ltd` |
@@ -117,15 +117,15 @@ URL 携带 miniprogram_token
 | `user_tiers` | 200，空表 | 表存在、无数据 |
 | `user_identities` | 404 schema cache 无此表 | P1 表未建（符合草案状态） |
 | `auth_exchange_codes` | 404 无此表 | P0 表未实施（符合草案状态） |
-| `auth.users` | **仅 1 人**：`zervi@genz.ltd`（2026-08-31 创建，2026-09-17 活跃）；无 `@wx.miniprogram` 虚拟邮箱；raw_user_meta_data 无 wx 字段 | **D5 污染不存在**（登录流程在 D1 处即失败，从未走到虚拟邮箱注册） |
-| `invites` | 200，有种子邀请码（zervi 签发，2026-09-30 过期） | 邀请码体系健康 |
+| `auth.users` | **仅 owner 测试账号 1 人**（创建/活跃时间略）；无 `@wx.miniprogram` 虚拟邮箱；raw_user_meta_data 无 wx 字段 | **D5 污染不存在**（登录流程在 D1 处即失败，从未走到虚拟邮箱注册） |
+| `invites` | 有种子邀请码（owner 签发） | 邀请码体系健康 |
 
 **勘察推论**：
 
 1. **小程序登录确认不可用**：`route.ts` 查用户第一步即 42703。
 2. **原 P1 的两块历史包袱实际不存在**：「回填历史数据」无数据可回填（库内 0 条 wx 记录）；「历史账号合并」无账号可合并（用户基数 = 1）。§6 P1 相应任务已标注不适用。
 3. **现在是 P0+P1 合并施工的最佳窗口**：用户基数 = 1、零迁移、零合并风险。原「P0 先加 `profiles.wx_openid` 列止血 → P1 再换 `user_identities` 表」的顺序是为有存量用户的场景设计的；实测后应**跳过加列，P0 直接建 `user_identities` 并重写 route 走新模型**，避免对 route.ts 二次改写。
-4. **切库丢用户留观**：生产 Supabase 项目 2026-09-17 切至 `ihuddnluwggbdppheixu`，新库仅 1 用户。若旧项目存有其他注册用户，切库即丢号——需 Owner 确认旧项目数据是否需迁移（超出本次勘察范围）。
+4. **切库丢用户留观**：生产 Supabase 项目近期完成切换，新库仅 owner 测试账号。若旧项目存有其他注册用户，切库即丢号——需 Owner 确认旧项目数据是否需迁移（超出本次勘察范围）。
 
 ---
 
