@@ -24,8 +24,8 @@ const config = {
     ? 'http://localhost:3000/api/og/card'
     : 'https://genzer.app/api/og/card',
 
-  // 种子邀请码（开发环境直接使用，生产环境从后端获取）
-  seedInviteCode: isDev ? 'GENZER2026' : '',
+  // 种子邀请码（一律从后端/环境获取，禁止硬编码进仓库）
+  seedInviteCode: '',
 
   // 分享默认配置
   shareDefault: {

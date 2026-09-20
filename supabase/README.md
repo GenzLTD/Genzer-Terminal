@@ -1,16 +1,16 @@
 # Supabase 数据库文档
 
 项目：Genzer Terminal（Zervi-Genzer 共识网络软件终端 · 前身为 DemoPPI）  
-Supabase Project URL：`https://ihuddnluwggbdppheixu.supabase.co`
+Supabase Project URL：`https://your-project-ref.supabase.co`（用你自己的项目地址）
 
 > **核心理念**：配额仅防刷滥用，治理权才是免费/付费的核心差异化。  
-> 参考：[genzer-contracts](https://github.com/xiajason/genzer-contracts)（GenzBadge + GenzReputation）
+> 参考：genzer-contracts 仓库（GenzBadge + GenzReputation，组织内可见）
 
 ---
 
 ## 迁移文件执行顺序
 
-全新部署时，按以下顺序在 [SQL Editor](https://supabase.com/dashboard/project/ihuddnluwggbdppheixu/sql/new) 执行：
+全新部署时，按以下顺序在 Supabase Dashboard → SQL Editor 执行：
 
 | 顺序 | 文件 | 内容 |
 |------|------|------|
@@ -236,8 +236,8 @@ Phase 4        → 跨链扩展 + DAO 完全自治（参考 Genzer Phase 4）
 | `NEXT_PUBLIC_SUPABASE_URL` | Supabase 项目 URL | `https://xxx.supabase.co` |
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase 匿名 Key | `eyJ...` |
 | `SUPABASE_SERVICE_ROLE_KEY` | Supabase Service Role Key | `eyJ...` |
-| `SEED_INVITE_CODE` | 种子邀请码（冷启动用） | `7A3B9F2C` |
-| `NEXT_PUBLIC_SEED_INVITE_CODE` | 前端种子码（注册用） | `7A3B9F2C` |
+| `SEED_INVITE_CODE` | 种子邀请码（冷启动用） | `<your-strong-seed-code>`（勿提交真实值） |
+| `NEXT_PUBLIC_SEED_INVITE_CODE` | 前端种子码（注册用） | `<your-strong-seed-code>` |
 | `NEXT_PUBLIC_TATHA_URL` | Tatha 后端地址（升级引导用） | `http://127.0.0.1:8010` |
 
 ---
@@ -246,5 +246,5 @@ Phase 4        → 跨链扩展 + DAO 完全自治（参考 Genzer Phase 4）
 
 | 邮箱 | 备注 |
 |------|------|
-| zervi@genz.ltd | 第一个通过邀请码注册的测试账号 |
+| `<owner-test-account>` | 第一个通过邀请码注册的测试账号 |
 | test@test.com | 手动插入 auth.users 的测试账号 |

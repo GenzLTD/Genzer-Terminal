@@ -19,7 +19,7 @@ Genzer Terminal（本仓库）  = 软件终端节点（链下快路径）
   ↕ 信号协议
 genzer-contracts           = 链上信号真源（ActionType + SBT）
   ↕
-PlanetX（looma-zervi）     = 游戏化封闭世界（域内匹配闭环）
+PlanetX                      = 游戏化封闭世界（域内匹配闭环）
   ↕
 Ctrl4U                     = 穿戴硬件终端（阶段三，规划中）
 ```
@@ -122,8 +122,7 @@ npm run dev
 
 - [`docs/strategy.md`](docs/strategy.md) — 战略决策记录（从 PPI 摘取 8 条决策）
 - [`docs/miniprogram-architecture.md`](docs/miniprogram-architecture.md) — 小程序架构设计
-- [`TECH_DOC_PLANETX_MATCH_PHASE1_2026-07-12.md`](../zervi-genzer/TECH_DOC_PLANETX_MATCH_PHASE1_2026-07-12.md) — PlanetX 域内匹配闭环技术规格
-- [`TEAM_DISCUSSION_GENZER_TERMINAL_2026-07-12.md`](../zervi-genzer/TEAM_DISCUSSION_GENZER_TERMINAL_2026-07-12.md) — Genzer 终端机团队研讨记录
+- PlanetX 域内匹配闭环技术规格、Genzer 终端机团队研讨记录 —— 内部文档，org 内可见，暂不公开
 
 ## License
 
