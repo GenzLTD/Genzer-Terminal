@@ -24,6 +24,17 @@ PlanetX                      = 游戏化封闭世界（域内匹配闭环）
 Ctrl4U                     = 穿戴硬件终端（阶段三，规划中）
 ```
 
+**跨站入口（2026-10-18）**：本终端部署在 Vercel（`www.genz.ltd`，认证走 Supabase），
+业务动作走后端在新加坡的站点：T空间/收银 `tspace.genz.ltd`、共识圈 `circle.genz.ltd`、
+营销与定价 `genz.ltd`。地址统一收敛在 `lib/genz-links.ts`，改指向只改 env，不在页面里硬编码：
+
+| 变量 | 默认值 |
+|---|---|
+| `NEXT_PUBLIC_GENZ_WEB_URL` | `https://genz.ltd` |
+| `NEXT_PUBLIC_GENZ_API_BASE` | `https://api.genz.ltd` |
+| `NEXT_PUBLIC_GENZ_TSPACE_URL` | `https://tspace.genz.ltd` |
+| `NEXT_PUBLIC_GENZ_CIRCLE_URL` | `https://circle.genz.ltd/circle` |
+
 ## 技术栈
 
 **Next.js 19 (App Router) + TypeScript + Tailwind CSS + Radix UI + Supabase**
