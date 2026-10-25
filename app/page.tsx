@@ -76,7 +76,7 @@ export default async function Home() {
             邀请码注册
           </Link>
           <Link
-            href="/discover"
+            href="/community"
             className="border border-foreground/20 px-6 py-3 rounded-lg font-medium hover:bg-foreground/5 transition"
           >
             探索社区
