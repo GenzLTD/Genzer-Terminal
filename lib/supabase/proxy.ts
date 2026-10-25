@@ -1,8 +1,17 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
+import { planetxEntryUrl } from "../planetx-entry";
+import { regionFromAcceptLanguage } from "../payment-plans";
 import { hasEnvVars } from "../utils";
 
 export async function updateSession(request: NextRequest) {
+  const ref = request.nextUrl.searchParams.get("ref");
+  const join = request.nextUrl.searchParams.get("join");
+  if (ref || join) {
+    const region = regionFromAcceptLanguage(request.headers.get("accept-language"));
+    return NextResponse.redirect(planetxEntryUrl({ region, ref, join }));
+  }
+
   let supabaseResponse = NextResponse.next({
     request,
   });

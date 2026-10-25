@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { EXTERNAL_LINK_PROPS, GENZ_LINKS } from "@/lib/genz-links";
+import { planetxEntryUrl } from "@/lib/planetx-entry";
 import {
   BILLING_REGIONS,
   type BillingRegion,
@@ -62,7 +62,7 @@ export function PricingPageContent({
 
       <div className="grid md:grid-cols-3 gap-6">
         {plans.map((plan) => {
-          const isCurrent = plan.tier === activeTier;
+          const isCurrent = isLoggedIn && plan.tier === activeTier;
           const highlighted = plan.tier === "supporter";
           return (
             <Card
@@ -100,11 +100,11 @@ export function PricingPageContent({
                     当前档位
                   </Button>
                 ) : plan.tier === "free" ? (
-                  <Link href={isLoggedIn ? "/protected" : "/auth/sign-up"} className="w-full">
+                  <a href={planetxEntryUrl({ region })} className="w-full" {...EXTERNAL_LINK_PROPS}>
                     <Button variant="outline" className="w-full">
-                      {isLoggedIn ? "返回首页" : "免费加入"}
+                      免费去测人格
                     </Button>
-                  </Link>
+                  </a>
                 ) : (
                   <a
                     className="w-full"
