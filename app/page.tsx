@@ -26,7 +26,7 @@ export default function Home() {
                 key={l.key}
                 href={l.href}
                 className="hover:text-foreground transition"
-                {...EXTERNAL_LINK_PROPS}
+                {...(l.external ? EXTERNAL_LINK_PROPS : {})}
               >
                 {l.label}
               </a>
