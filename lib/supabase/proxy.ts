@@ -1,8 +1,17 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
+import { planetxEntryUrl } from "../planetx-entry";
+import { regionFromAcceptLanguage } from "../payment-plans";
 import { hasEnvVars } from "../utils";
 
 export async function updateSession(request: NextRequest) {
+  const ref = request.nextUrl.searchParams.get("ref");
+  const join = request.nextUrl.searchParams.get("join");
+  if (ref || join) {
+    const region = regionFromAcceptLanguage(request.headers.get("accept-language"));
+    return NextResponse.redirect(planetxEntryUrl({ region, ref, join }));
+  }
+
   let supabaseResponse = NextResponse.next({
     request,
   });
@@ -10,6 +19,11 @@ export async function updateSession(request: NextRequest) {
   // If the env vars are not set, skip proxy check. You can remove this
   // once you setup the project.
   if (!hasEnvVars) {
+    if (request.nextUrl.pathname.startsWith("/discover")) {
+      const url = request.nextUrl.clone();
+      url.pathname = "/auth/login";
+      return NextResponse.redirect(url);
+    }
     return supabaseResponse;
   }
 

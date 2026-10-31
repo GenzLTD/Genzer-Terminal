@@ -6,10 +6,17 @@ import {
   GENZ_CIRCLE_URL,
   GENZ_LINKS,
 } from "@/lib/genz-links";
+import { planetxEntryUrl } from "@/lib/planetx-entry";
+import { regionFromAcceptLanguage } from "@/lib/payment-plans";
+import { headers } from "next/headers";
 import Link from "next/link";
 import { Suspense } from "react";
 
-export default function Home() {
+export default async function Home() {
+  const headerList = await headers();
+  const region = regionFromAcceptLanguage(headerList.get("accept-language"));
+  const planetxHref = planetxEntryUrl({ region });
+
   return (
     <main className="min-h-screen flex flex-col">
       {/* Nav */}
@@ -26,7 +33,7 @@ export default function Home() {
                 key={l.key}
                 href={l.href}
                 className="hover:text-foreground transition"
-                {...EXTERNAL_LINK_PROPS}
+                {...(l.external ? EXTERNAL_LINK_PROPS : {})}
               >
                 {l.label}
               </a>
@@ -55,14 +62,21 @@ export default function Home() {
         </p>
 
         <div className="flex flex-wrap justify-center gap-4 mt-4">
+          <a
+            href={planetxHref}
+            className="bg-foreground text-background px-6 py-3 rounded-lg font-medium hover:opacity-90 transition"
+            {...EXTERNAL_LINK_PROPS}
+          >
+            测星际人格
+          </a>
           <Link
             href="/auth/sign-up"
-            className="bg-foreground text-background px-6 py-3 rounded-lg font-medium hover:opacity-90 transition"
+            className="border border-foreground/20 px-6 py-3 rounded-lg font-medium hover:bg-foreground/5 transition"
           >
             邀请码注册
           </Link>
           <Link
-            href="/discover"
+            href="/community"
             className="border border-foreground/20 px-6 py-3 rounded-lg font-medium hover:bg-foreground/5 transition"
           >
             探索社区
@@ -121,10 +135,11 @@ export default function Home() {
         <p className="text-muted-foreground">Genzer Terminal · 共识网络自治节点</p>
         <p className="text-muted-foreground flex gap-4">
           <a
-            href={GENZ_LINKS.web}
+            href={planetxHref}
             className="hover:text-foreground hover:underline underline-offset-4"
+            {...EXTERNAL_LINK_PROPS}
           >
-            GenZ PlanetX
+            PlanetX
           </a>
           <a
             href={GENZ_LINKS.tspace}

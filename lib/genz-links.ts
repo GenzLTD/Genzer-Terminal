@@ -24,12 +24,21 @@ export const GENZ_LINKS = {
   circle: trimTrailing(
     process.env.NEXT_PUBLIC_GENZ_CIRCLE_URL || "https://circle.genz.ltd/circle",
   ),
+  /**
+   * PlanetX 闯关包。裂变邀请（?ref= / ?join=）只在这里核销。
+   * 生产必须用 NEXT_PUBLIC_GENZ_PLANETX_URL 指向该环境的 PlanetX，
+   * 不要指到 app.genz.ltd，也不要把终端自己的 Supabase 邀请码送过去。
+   * 未配置时落在本机 5173，方便和 looma 一起验。
+   */
+  planetx: trimTrailing(
+    process.env.NEXT_PUBLIC_GENZ_PLANETX_URL || "http://127.0.0.1:5173",
+  ),
 } as const;
 
 /** 注册/收银入口（与 genz-web 的 appRegisterUrl 同一口径） */
 export const GENZ_REGISTER_URL = `${GENZ_LINKS.tspace}/register`;
-/** 定价页（营销站） */
-export const GENZ_PRICING_URL = `${GENZ_LINKS.web}/pricing`;
+/** 终端自己的定价页。价格随地区从 payment.v1.json 取出，不跳到营销站。 */
+export const GENZ_PRICING_URL = "/pricing";
 /** 共识圈首页 */
 export const GENZ_CIRCLE_URL = `${GENZ_LINKS.circle}/`;
 
@@ -37,13 +46,15 @@ export type GenzLink = {
   key: string;
   label: string;
   href: string;
+  external: boolean;
 };
 
 /** 终端里的新加坡业务入口（顺序即展示顺序） */
 export const GENZ_BUSINESS_LINKS: GenzLink[] = [
-  { key: "tspace", label: "T空间", href: GENZ_LINKS.tspace },
-  { key: "circle", label: "共识圈", href: GENZ_CIRCLE_URL },
-  { key: "pricing", label: "定价", href: GENZ_PRICING_URL },
+  { key: "planetx", label: "PlanetX", href: GENZ_LINKS.planetx, external: true },
+  { key: "tspace", label: "T空间", href: GENZ_LINKS.tspace, external: true },
+  { key: "circle", label: "共识圈", href: GENZ_CIRCLE_URL, external: true },
+  { key: "pricing", label: "定价", href: GENZ_PRICING_URL, external: false },
 ];
 
 /** 新窗口链接的通用属性（noopener 防 window.opener 劫持） */
