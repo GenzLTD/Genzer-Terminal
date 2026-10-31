@@ -1,10 +1,18 @@
 import { headers } from "next/headers";
 import { createClient } from "@/lib/supabase/server";
 import { PricingPageContent } from "@/components/pricing/pricing-page";
-import { regionFromAcceptLanguage } from "@/lib/payment-plans";
+import {
+  normalizeRegion,
+  regionFromAcceptLanguage,
+  type BillingRegion,
+} from "@/lib/payment-plans";
 import { hasEnvVars } from "@/lib/utils";
 
-export default async function PricingPage() {
+export default async function PricingPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ region?: string }>;
+}) {
   // 未登录也可以看定价页；本机没配 Supabase 时按未登录渲染
   let tier = "free";
   let user: { id: string } | null = null;
@@ -24,8 +32,13 @@ export default async function PricingPage() {
     }
   }
 
+  // 地区优先取链接上带的 ?region=（裂变落地页会带上），没有再退回浏览器语言。
+  // 注意 normalizeRegion 对空值会返回 CN，所以必须先判断"有没有传"，不能直接喂给它。
   const headerList = await headers();
-  const initialRegion = regionFromAcceptLanguage(headerList.get("accept-language"));
+  const requested = (await searchParams)?.region;
+  const initialRegion: BillingRegion = requested
+    ? normalizeRegion(requested)
+    : regionFromAcceptLanguage(headerList.get("accept-language"));
 
   return (
     <PricingPageContent
