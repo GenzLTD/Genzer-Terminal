@@ -26,6 +26,9 @@ function SignUpFormInner({
   const [inviteCode, setInviteCode] = useState("");
   const [inviteValid, setInviteValid] = useState<boolean | null>(null);
   const [isSeedCode, setIsSeedCode] = useState(false); // ★ 是否是种子码
+  // 邀请码由链接预填（?invite= 或裂变口径的 ?join=）；ref 只是归因来源，不是邀请码
+  const [prefilled, setPrefilled] = useState(false);
+  const [refCode, setRefCode] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
@@ -33,10 +36,15 @@ function SignUpFormInner({
 
   // Pre-fill invite code from URL param
   useEffect(() => {
-    const code = searchParams.get("invite");
+    // invite 是注册页原生口径，join 是裂变闭环口径，两者都收；
+    // ref 只做归因留痕，不能当成邀请码用（PlanetX 的 ref 是 PX- 随机数）。
+    const code = searchParams.get("invite") ?? searchParams.get("join");
     if (code) {
       setInviteCode(code.toUpperCase());
+      setPrefilled(true);
     }
+    const ref = searchParams.get("ref");
+    if (ref) setRefCode(ref.trim());
   }, [searchParams]);
 
   // Real-time invite code validation
@@ -104,6 +112,7 @@ function SignUpFormInner({
           emailRedirectTo: `${window.location.origin}/onboarding`,
           data: {
             invite_code: inviteCode.trim().toUpperCase(),
+            ...(refCode ? { referred_by: refCode } : {}),
           },
         },
       });
@@ -164,7 +173,7 @@ function SignUpFormInner({
                 {inviteValid === false && (
                   <p className="text-xs text-red-500">邀请码无效或已过期</p>
                 )}
-                {inviteCode.startsWith("?invite=") && (
+                {prefilled && (
                   <p className="text-xs text-muted-foreground">
                     通过邀请链接访问，邀请码已自动填入
                   </p>

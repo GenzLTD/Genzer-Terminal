@@ -7,6 +7,11 @@ import {
 } from "@/lib/genz-links";
 import Link from "next/link";
 import { Suspense } from "react";
+import {
+  parseGrowthParams,
+  pricingUrl,
+  signUpUrl,
+} from "@/lib/growth-params";
 
 const STATEMENTS = [
   {
@@ -23,7 +28,15 @@ const STATEMENTS = [
   },
 ];
 
-export default function CommunityGuidePage() {
+export default async function CommunityGuidePage({
+  searchParams,
+}: {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}) {
+  // 裂变带进来的 region / join(邀请码) / ref(归因) 在这里落地，
+  // 再往后传给注册页与定价页，别让参数在这一页丢掉。
+  const growth = parseGrowthParams(await searchParams);
+
   return (
     <main className="min-h-screen flex flex-col">
       <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16">
@@ -61,12 +74,23 @@ export default function CommunityGuidePage() {
           <h2 className="text-lg font-semibold">从这里进去</h2>
           <div className="flex flex-col gap-3">
             <Link
-              href="/auth/sign-up"
+              href={signUpUrl(growth)}
               className="border border-foreground/20 rounded-lg px-5 py-4 hover:bg-foreground/5 transition"
             >
               <span className="font-medium">邀请码注册</span>
               <span className="block text-sm text-muted-foreground mt-1">
-                还没有账号，用老成员给你的邀请码注册。
+                {growth.join
+                  ? "邀请码已随链接带入，确认后即可注册。"
+                  : "还没有账号，用老成员给你的邀请码注册。"}
+              </span>
+            </Link>
+            <Link
+              href={pricingUrl(growth)}
+              className="border border-foreground/20 rounded-lg px-5 py-4 hover:bg-foreground/5 transition"
+            >
+              <span className="font-medium">查看定价</span>
+              <span className="block text-sm text-muted-foreground mt-1">
+                按{growth.region === "CN" ? "中国区" : "美元区"}显示，价格随地区走支付契约。
               </span>
             </Link>
             <Link
